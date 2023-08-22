@@ -15,10 +15,12 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "host1" do |host1|
     host1.vm.box = "hashicorp/bionic64"
+    host1.vm.network :forwarded_port, guest: 22, host: 10122, id: "ssh"
   end
 
   config.vm.define "host2" do |host2|
     host2.vm.box = "hashicorp/bionic64"
+    host2.vm.network :forwarded_port, guest: 22, host: 10222, id: "ssh"
   end
 
   # Disable automatic box update checking. If you disable this, then
